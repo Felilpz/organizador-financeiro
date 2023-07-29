@@ -1,0 +1,139 @@
+@charset "UTF-8";
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Paleta de cores monocromática - mais forte... */
+    --cor1: #004c6d;
+    --cor2: #346888;
+    --cor3: #5886a5;
+    --cor4: #7aa6c2;
+    --cor5: #9dc6e0;
+    --cor6: #c1e7ff;
+}
+/* usar menos !important (forma forçada e invasiva de declarar estilo) */
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main {
+    width: 80vw;
+    height: 80vh;
+
+    /* background-image: linear-gradient(180deg, var(--cor5), var(--cor6));
+    border: 1px solid var(--cor1);
+    border-radius: 10px;
+    padding: 10px; */
+}
+
+#primeiroBloco {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    padding-top: 20px;
+}
+
+.bloco {
+    display: flex;
+    flex-direction: row;
+    font-size: 1.2em;
+}
+
+.entradas, .saidas, .sobrando {
+    width: 300px;
+
+    background-color: var(--cor1);
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.entry {
+    display: flex;
+    justify-content: space-between;
+}
+
+.valor {
+    color: var(--cor6);
+    font-size: 2.5em;
+    font-weight: bolder;
+    text-align: center;
+}
+
+button.botao {
+    background-color: transparent;
+    border: none;
+    color: white;
+    height: 0;
+}
+
+/* segundo parte */
+#segundoBloco {
+    display: flex;
+    flex-direction: row;
+    padding-top: 40px;
+}
+
+
+#add {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.desc {
+    width: 300px;
+}
+
+/* terceira parte */
+#terceiroBloco {
+    display: flex;
+    flex-direction: row;
+    padding-top: 30px;
+    justify-content: space-between;
+}
+
+.contasPagas {
+    width: 30%;
+}
+
+.contasPagar {
+    width: 68%;
+}
+
+.contaPaga {
+    width: 100%;
+    background-color: var(--cor6);
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.contaPagar {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    background-color: var(--cor6);
+    padding: 6px;
+    margin-top: 10px;
+}
+
+.descP {
+    max-width: 390px;
+}
+
+.check {
+    background-color: transparent;
+    border: none;
+    height: 0;
+}
