@@ -158,20 +158,30 @@ tr:nth-child(even) {
     justify-content: space-between;
     align-items: center;
     padding: 5px;
+    height: 30px;
 }
 
-.item-2:nth-child(even), .item:nth-child(even) {
+.item-2:nth-child(odd) {
     background-color: var(--cor5);
 }
 
-.item {
-    margin: 10px 0;
+.item:nth-child(odd) {
+    background-color: rgba(96, 223, 96, 0.199);
 }
 
-.fonte, .montante, .transacao {
+.item {
+    height: 30px;
+    padding: 5px;
+
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
+
+/* .fonte, .montante, .transacao {
+    display: flex;
+    justify-content: space-between;
+} */
 
 .btn-check {
     width: 30px;
