@@ -10,116 +10,176 @@
     <link rel="shortcut icon" href="imagens/bank2.svg" type="image/x-icon">
     <script src="script/script.js"></script>
     <!-- Externo -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
 
 <body>
-    <main>
-        <article id="primeiroBloco">
-            <div class="entradas">
-                <div class="bloco entry">
-                    <p>Entradas</p>
-                    <button type="button" class="botao">
-                        <i class="bi bi-house-add"></i>
+    <div class="container">
+        <main>
+            <div id="first">
+                <div class="blocosPrincipais">
+                    <p>RECEITAS</p>
+                    <h1>R$ 30,00</h1>
+                </div>
+                <div class="blocosPrincipais">
+                    <p>DESPESAS</p>
+                    <h1>R$ 20,00</h1>
+                </div>
+                <div class="blocosPrincipais">
+                    <p>DISPONÍVEL</p>
+                    <h1>R$ 10,00</h1>
+                </div>
+            </div>
+            <div id="second">
+                <div class="credor">
+                    <label for="credor">Fonte:</label><br>
+                    <input type="text" id="credor">
+                </div>
+                <div class="valor">
+                    <label for="valor">Montante:</label><br>
+                    <input type="text" id="valor">
+                </div>
+                <div class="detalhesDespesa">
+                    <label for="detalhes">Detalhes:</label><br>
+                    <input type="text" id="detalhes">
+                </div>
+            </div>
+            <div id="third">
+                <div class="dataVencimento">
+                    <label for="vencimento">Data de Vencimento:</label><br>
+                    <input type="date" id="vencimento">
+                </div>
+                <div class="dataCompra">
+                    <label for="transacao">Data de Transação:</label><br>
+                    <input type="date" id="transacao">
+                </div>
+                <div class="btn">
+                    <br>
+                    <button type="button" id="botao">
+                        Registrar
                     </button>
                 </div>
-                <div class="valor">
-                    R$ 1000
-                </div>
             </div>
-            <div class="saidas">
-                <p>Saídas</p>
-                <div class="valor">
-                    R$ 500
+            <div id="fourth">
+                <!-- <div id="primeiraTabela">
+                    <h3>Contas pagas</h3>
+                    <table>
+                        <thead>
+                            <tr>Fonte</tr>
+                            <tr>Montante</tr>
+                            <tr>Transacão</tr>
+                        </thead>
+                        <tbody>
+                            <td>Nubank</td>
+                            <td>R$ 200</td>
+                            <td>31/07/2023</td>
+                        </tbody>
+                    </table>
                 </div>
-            </div>
-            <div class="sobrando">
-                <p>Saldo sobrando</p>
-                <div class="valor">
-                    R$ 500
-                </div>
-            </div>
-        </article>
-        <article id="segundoBloco">
-            <div id="add">
-                <div class="desc">
-                    <label for="descricao" class="form-label">Descrição da conta</label>
-                    <input type="text" class="form-control" id="descricao" placeholder="Compra na shopee">
-                </div>
-                <div class="desc">
-                    <label for="quemPaguei" class="form-label">Credor</label>
-                    <input type="text" class="form-control" id="quemPaguei" placeholder="Nubank">
-                </div>
-                <div class="desc">
-                    <label for="data" class="form-label">Data da compra</label>
-                    <input type="date" class="form-control" id="data">
-                </div>
-                <button type="button" class="btn btn-primary" id="btn">
-                    Adicionar conta
-                </button>
-            </div>
-        </article>
-        <article id="terceiroBloco">
-            <div class="contasPagas">
-                <h4 class="text-center">Histórico de contas pagas</h4>
+                <div id="segundaTabela">
+                    <h3>Contas a pagar</h3>
+                    <table>
+                        <thead>
+                          <tr>
+                            <th>Fonte</th>
+                            <th>Montante</th>
+                            <th>Detalhes</th>
+                            <th>Vencimento</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Nubank</td>
+                            <td>R$ 200</td>
+                            <td>Compra de perfume</td>
+                            <td>27/07/2022</td>
+                          </tr>
+                          <tr>
+                            <td>Nubank</td>
+                            <td>R$ 200</td>
+                            <td>Compra de perfume</td>
+                            <td>27/07/2022</td>
+                          </tr>
+                          <tr>
+                            <td>Nubank</td>
+                            <td>R$ 200</td>
+                            <td>Compra de perfume</td>
+                            <td>27/07/2022</td>
+                          </tr>
+                          <tr>
+                            <td>Nubank</td>
+                            <td>R$ 200</td>
+                            <td>Compra de perfume</td>
+                            <td>27/07/2022</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      
+                </div> -->
 
-                <div class="contaPaga">
-                    <div class="row justify-content-around">
-                        <div class="um col-6">
-                            <h5>NUBANK</h5>
-                            <h6>R$ <span>500</span></h6>
+                <div id="pagas">
+                    <div class="item">
+                        <div class="fonte">
+                            <p>Fonte:</p>
+                            <p>Nubank</p>
                         </div>
-                        <div class="dois col-6">
-                            <h5>DATA</h5>
-                            <h6>12/12/22</h6>
+                        <div class="montante">
+                            <p>Montante:</p>
+                            <p>R$ 40,00</p>
+                        </div>
+                        <div class="transacao">
+                            <p>Transação:</p>
+                            <p>27/03/12</p>
                         </div>
                     </div>
-                    <div class="descricao">
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rerum, praesentium? Expedita corrupti veniam voluptatibus dolorem officia natus ipsum magnam recusandae porro, quo animi unde vel accusantium culpa sint voluptatem aut.</p>
+                    <div class="item">
+                        <div class="fonte">
+                            <p>Fonte:</p>
+                            <p>Nubank</p>
+                        </div>
+                        <div class="montante">
+                            <p>Montante:</p>
+                            <p>R$ 40,00</p>
+                        </div>
+                        <div class="transacao">
+                            <p>Transação:</p>
+                            <p>27/03/12</p>
+                        </div>
                     </div>
                 </div>
-                
-            </div>
-            <div class="contasPagar">
-                <h4 class="text-center">Contas a pagar</h4>
-
-                <div class="contaPagar">
-                    <h5>FEIRA</h5>
-                    <h6>12/12/22</h6>
-                    <p class="descP">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </p>
-                    <button type="button" class="check">
-                        <i class="bi bi-check2-all"></i>
-                    </button>
-                </div>
-
-                <div class="contaPagar">
-                    <h5>FEIRA</h5>
-                    <h6>12/12/22</h6>
-                    <p class="descP">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </p>
-                    <button type="button" class="check">
-                        <i class="bi bi-check2-all"></i>
-                    </button>
-                </div>
-
-                <div class="contaPagar">
-                    <h5>FEIRA</h5>
-                    <h6>12/12/22</h6>
-                    <p class="descP">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </p>
-                    <button type="button" class="check">
-                        <i class="bi bi-check2-all"></i>
-                    </button>
+                <div id="aPagar">
+                    <div class="item-2">
+                        <p>Feira</p>
+                        <p>R$ 70,00</p>
+                        <p>27/03/12</p>
+                        <p>Fiz compra na feira</p>
+                        <i class="bi bi-check2-all btn-check"></i>
+                    </div>
+                    <div class="item-2">
+                        <p>Feira</p>
+                        <p>R$ 70,00</p>
+                        <p>27/03/12</p>
+                        <p>Fiz compra na feira</p>
+                        <i class="bi bi-check2-all btn-check"></i>
+                    </div>
+                    <div class="item-2">
+                        <p>Feira</p>
+                        <p>R$ 70,00</p>
+                        <p>27/03/12</p>
+                        <p>Fiz compra na feira</p>
+                        <i class="bi bi-check2-all btn-check"></i>
+                    </div>
+                    <div class="item-2">
+                        <p>Feira</p>
+                        <p>R$ 70,00</p>
+                        <p>27/03/12</p>
+                        <p>Fiz compra na feira</p>
+                        <i class="bi bi-check2-all btn-check"></i>
+                    </div>
                 </div>
             </div>
-        </article>
-    </main>
+        </main>
+    </div>
 </body>
 
 </html>
