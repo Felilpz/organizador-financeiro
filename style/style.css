@@ -33,7 +33,7 @@ body {
 }
 
 main {
-    width: 700px;
+    width: 800px;
     max-height: 500px;
 
     border-top-left-radius: 15px;
@@ -176,6 +176,7 @@ tr:nth-child(even) {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    align-content: center;
 }
 
 /* .fonte, .montante, .transacao {
@@ -187,6 +188,7 @@ tr:nth-child(even) {
     width: 30px;
     /* border: 1px solid red; */
     font-size: 1.4em;
+    line-height: 0;
 }
 
 .btn-check:hover {
@@ -194,5 +196,11 @@ tr:nth-child(even) {
     color: var(--cor4);
     cursor: pointer;
     color: darkgreen;
-    box-shadow: none;
+}
+
+.item-2 p {
+    width: 100px;
+    word-wrap: break-word;
+    text-align: left;
+
 }
