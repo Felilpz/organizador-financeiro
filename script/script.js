@@ -19,15 +19,15 @@ btn.addEventListener('click', function() {
     pagar.className = "item-2"
     
     let fonteJS = document.createElement('p')
-    fonteJS.innerHTML = `${fonte.value.toUpperCase()}`
+    fonteJS.innerHTML = `${fonte.value}`
     pagar.appendChild(fonteJS)
 
     let montanteJS = document.createElement('p')
-    montanteJS.innerHTML = `R$ ${montante.value.toUpperCase()}`
+    montanteJS.innerHTML = `R$ ${montante.value}`
     pagar.appendChild(montanteJS)
 
     let detalhesJS = document.createElement('p')
-    detalhesJS.innerHTML = `${detalhes.value.toUpperCase()}`
+    detalhesJS.innerHTML = `${detalhes.value}`
     pagar.appendChild(detalhesJS)
 
     let vencimentoJS = document.createElement('p')
