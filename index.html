@@ -16,50 +16,57 @@
 <body>
     <div class="container">
         <main>
-            <div id="first">
-                <div class="blocosPrincipais">
-                    <p>RECEITAS</p>
-                    <h1>R$ 30,00</h1>
+            <form id="form">
+                <div id="first">
+                    <div class="blocosPrincipais">
+                        <div class="receita">
+                            <p>RECEITAS</p>
+                            <button type="button" id="addMoney">
+                                <i class="bi bi-piggy-bank"></i>
+                            </button>
+                        </div>
+                        <h1>R$ <span id="valorCheio">30,00</span></h1>
+                    </div>
+                    <div class="blocosPrincipais">
+                        <p>DESPESAS</p>
+                        <h1>R$ 20,00</h1>
+                    </div>
+                    <div class="blocosPrincipais">
+                        <p>DISPONÍVEL</p>
+                        <h1>R$ 10,00</h1>
+                    </div>
                 </div>
-                <div class="blocosPrincipais">
-                    <p>DESPESAS</p>
-                    <h1>R$ 20,00</h1>
+                <div id="second">
+                    <div class="credor">
+                        <label for="credor">Fonte:</label><br>
+                        <input type="text" id="credor"> 
+                    </div>
+                    <div class="valor">
+                        <label for="valor">Montante:</label><br>
+                        <input type="number" id="valor">
+                    </div>
+                    <div class="detalhesDespesa">
+                        <label for="detalhes">Detalhes:</label><br>
+                        <input type="text" id="detalhes" maxlength="12">
+                    </div>
                 </div>
-                <div class="blocosPrincipais">
-                    <p>DISPONÍVEL</p>
-                    <h1>R$ 10,00</h1>
+                <div id="third">
+                    <div class="dataVencimento">
+                        <label for="vencimento">Data de Vencimento:</label><br>
+                        <input type="date" id="vencimento">
+                    </div>
+                    <div class="dataCompra">
+                        <label for="transacao">Data de Transação:</label><br>
+                        <input type="date" id="transacao">
+                    </div>
+                    <div class="btn">
+                        <br>
+                        <button type="submit" id="botao">
+                            Registrar
+                        </button>
+                    </div>
                 </div>
-            </div>
-            <div id="second">
-                <div class="credor">
-                    <label for="credor">Fonte:</label><br>
-                    <input type="text" id="credor" required>
-                </div>
-                <div class="valor">
-                    <label for="valor">Montante:</label><br>
-                    <input type="number" id="valor" required>
-                </div>
-                <div class="detalhesDespesa">
-                    <label for="detalhes">Detalhes:</label><br>
-                    <input type="text" id="detalhes" required maxlength="12">
-                </div>
-            </div>
-            <div id="third">
-                <div class="dataVencimento">
-                    <label for="vencimento">Data de Vencimento:</label><br>
-                    <input type="date" id="vencimento" required>
-                </div>
-                <div class="dataCompra">
-                    <label for="transacao">Data de Transação:</label><br>
-                    <input type="date" id="transacao" required>
-                </div>
-                <div class="btn">
-                    <br>
-                    <button type="submit" id="botao">
-                        Registrar
-                    </button>
-                </div>
-            </div>
+            </form>
             <div id="fourth">
                 <!-- <div id="primeiraTabela">
                     <h3>Contas pagas</h3>
@@ -182,40 +189,6 @@
                 </div>
             </div>
         </main>
-    </div>
-
-    <div id="container">
-        <button class="btn btn-primary m-4 p-3" data-bs-toggle="modal" data-bs-target="#janelaModal">
-             Clique para abrir o modal
-        </button> 
- 
-        <div id="janelaModal" class="modal fade">
-             <div class="modal-dialog">
-                 <div class="modal-content">
-                     <div class="modal-header">
-                         <h3 class="modal-title">Título teste do modal</h3>
-                         <button class="btn btn-close" data-bs-dismiss="modal"></button>
-                     </div>
- 
-                     <div class="modal-body">
-                         <p>
-                             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti consectetur doloribus nam doloremque reiciendis ratione natus omnis nobis, molestiae tenetur, temporibus tempora earum pariatur alias sapiente aliquam corporis nulla ducimus. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis, ipsam itaque accusamus fugit accusantium blanditiis. Corrupti ea odit quod ullam temporibus rerum vitae mollitia maiores, ut officiis voluptatum eos quidem.
-                         </p>
-                         <p>
-                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, facere consequatur ut fuga placeat alias veritatis! Iste adipisci itaque minus! Quisquam ipsum excepturi sapiente doloremque quia officia, omnis quibusdam eaque. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum eius praesentium, magni aut iure nostrum ipsa atque, quasi laudantium suscipit voluptatibus dolorem ipsam, fugit dicta aspernatur sit sequi deleniti vero.
-                         </p>
-                     </div>
- 
-                     <div class="modal-footer">
-                         <a href="https://github.com/Felilpz" target="_blank" >Ir para o github</a>
-                         <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="janelaModal">
-                             Sair
-                         </button>
-                     </div>
-                 </div>
-             </div>
-        </div>
-     </div>
 </body>
 
 </html>

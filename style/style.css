@@ -66,6 +66,16 @@ main {
     font-weight: bolder;
 }
 
+.receita {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.receita h1 {
+    align-self: flex-end;
+}
+
 .blocosPrincipais h1 {
     align-self: flex-end;
     margin-top: auto;
@@ -84,7 +94,7 @@ main {
 input, button {
     width: 200px;
     padding: 8px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     outline: none;
 }
 
@@ -95,8 +105,8 @@ button#botao {
 }
 
 button#botao:hover {
-    transition: .5s;
-    background-color: var(--cor4);
+    /* background-color: var(--cor4); */
+    background-image: linear-gradient(90deg, var(--cor4), var(--cor5));
     cursor: pointer;
     color: #fff;
     box-shadow: none;
@@ -207,4 +217,18 @@ tr:nth-child(even) {
 
 #container {
     display: none;
+}
+
+button#addMoney {
+    padding: 0;
+    width: 20px;
+    font-size: 1em;
+    text-align: right;
+    border: none;
+    background-color: transparent;
+}
+
+button#addMoney:hover {
+    color: green;
+    cursor: pointer;
 }
