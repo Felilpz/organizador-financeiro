@@ -76,11 +76,11 @@ form.addEventListener('submit', (event) => {
     }
 
     // se todos os campos do formulario tiver preenchido, o form vai djonguear
-    console.log(`fonte: ${fonte.value}`)
-    console.log(`montante: ${montante.value}`)
-    console.log(`detalhes: ${detalhes.value}`)
-    console.log(`vencimento: ${vencimento.value}`)
-    console.log(`transacao: ${transacao.value}`)
+    // console.log(`fonte: ${fonte.value}`)
+    // console.log(`montante: ${montante.value}`)
+    // console.log(`detalhes: ${detalhes.value}`)
+    // console.log(`vencimento: ${vencimento.value}`)
+    // console.log(`transacao: ${transacao.value}`)
 
     const pagar = document.createElement('div')
     pagar.className = "item-2"
@@ -109,13 +109,55 @@ form.addEventListener('submit', (event) => {
 
     const divPai = document.getElementById('aPagar')
     divPai.appendChild(pagar)
+    atualizarDespesas();
 })
 
 
-const addMoney = document.getElementById('addMoney')
-addMoney.addEventListener('click', (event) => {
-    event.preventDefault()
-    let valorAdicional = window.prompt("O valor será acrescentado ao saldo. Digite o valor:")
-    let saldoAtual = document.getElementById('valorCheio')
-    console.log(valorAdicional)
-})
+//adicionar entrada
+const addMoneyButton = document.getElementById('addMoney')
+
+addMoneyButton.addEventListener('click', function () {
+    const entradasSpan = document.getElementById('entradas')
+
+    let entradas = parseFloat(entradasSpan.textContent)
+
+    let novoSaldo = parseFloat(prompt("Digite o valor a ser acrescentado:"))
+
+    if (isNaN(novoSaldo) || novoSaldo < 0) {
+        alert('Por favor, digite um valor válido!')
+        return
+    }
+
+    let novoSaldoTotal = entradas + novoSaldo
+    entradasSpan.textContent = novoSaldoTotal.toFixed(2)
+});
+
+
+//despesas (preciso pegar a div pagas e percorrer todos os valores(classe montante) e dps somar todas elas)
+function atualizarDespesas() {
+    const pagas = document.getElementById('pagas');
+    let contas = pagas.getElementsByClassName('montante');
+
+    let despesasTotal = 0;
+
+    for (let i = 0; i < contas.length; i++) {
+        let pegarValor = contas[i].textContent;
+
+        if (!isNaN(pegarValor)) {
+            let convertido = parseFloat(pegarValor);
+            despesasTotal += convertido;
+        }
+    }
+
+    let valorTotalElement = document.getElementById('valorTotal');
+    if (valorTotalElement) {
+        valorTotalElement.textContent = despesasTotal.toFixed(2);
+    }
+    console.log(despesasTotal)
+}
+
+// Aguarde o carregamento completo do documento
+document.addEventListener('DOMContentLoaded', function() {
+    // Chame a função para atualizar as despesas
+    atualizarDespesas();
+});

@@ -72,11 +72,11 @@ main {
     justify-content: space-between;
 }
 
-.receita h1 {
+.receita h2 {
     align-self: flex-end;
 }
 
-.blocosPrincipais h1 {
+.blocosPrincipais h2 {
     align-self: flex-end;
     margin-top: auto;
 }
