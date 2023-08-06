@@ -154,10 +154,4 @@ function atualizarDespesas() {
         valorTotalElement.textContent = despesasTotal.toFixed(2);
     }
     console.log(despesasTotal)
-}
-
-// Aguarde o carregamento completo do documento
-document.addEventListener('DOMContentLoaded', function() {
-    // Chame a função para atualizar as despesas
-    atualizarDespesas();
-});
+};
