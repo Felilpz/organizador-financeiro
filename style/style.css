@@ -23,6 +23,7 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
 }
 
 .container {
@@ -194,7 +195,7 @@ tr:nth-child(even) {
     justify-content: space-between;
 } */
 
-.btn-check {
+.btn-check, #btn-check {
     width: 30px;
     /* border: 1px solid red; */
     font-size: 1.4em;
@@ -231,4 +232,24 @@ button#addMoney {
 button#addMoney:hover {
     color: green;
     cursor: pointer;
+}
+
+.radios {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    width: 200px;
+}
+
+.colorChange {
+    color: var(--cor2);
+}
+
+#exemplo {
+    font-weight: bold;
+    color: var(--cor2);
+    font-style: italic;
+    font-size: 14px;
+    margin-top: 20px;
 }

@@ -3,47 +3,10 @@ const btn = document.getElementById('botao')
 let fonte = document.getElementById('credor')
 let montante = document.getElementById('valor')
 let detalhes = document.getElementById('detalhes')
-let vencimento = document.getElementById('vencimento')
 let transacao = document.getElementById('transacao')
-
-
-// btn.addEventListener('click', function() {
-
-//     // console.log(`fonte: ${fonte.value}`)
-//     // console.log(`montante: ${montante.value}`)
-//     // console.log(`detalhes: ${detalhes.value}`)
-//     // console.log(`vencimento: ${vencimento.value}`)
-//     // console.log(`transacao: ${transacao.value}`)
-
-//     const pagar = document.createElement('div')
-//     pagar.className = "item-2"
-
-//     let fonteJS = document.createElement('p')
-//     fonteJS.innerHTML = `${fonte.value}`
-//     pagar.appendChild(fonteJS)
-
-//     let montanteJS = document.createElement('p')
-//     montanteJS.innerHTML = `R$ ${montante.value}`
-//     pagar.appendChild(montanteJS)
-
-//     let detalhesJS = document.createElement('p')
-//     detalhesJS.innerHTML = `${detalhes.value}`
-//     pagar.appendChild(detalhesJS)
-
-//     let vencimentoJS = document.createElement('p')
-//     vencimentoJS.innerHTML = `${transacao.value}`
-//     pagar.appendChild(vencimentoJS)
-
-//     let transacaoJS = document.createElement('p')
-//     transacaoJS.innerHTML = `${vencimento.value}`
-//     pagar.appendChild(transacaoJS)
-
-//     pagar.innerHTML += `<i class="bi bi-check2-all btn-check"></i>`
-
-//     const divPai = document.getElementById('aPagar')
-//     divPai.appendChild(pagar)
-// })
-
+let entrada = document.getElementById('entradaRadio')
+let saida = document.getElementById('radioSaida')
+const divPai = document.getElementById('aPagar')
 
 const form = document.querySelector('#form')
 
@@ -65,93 +28,52 @@ form.addEventListener('submit', (event) => {
         return;
     }
 
-    if (vencimento.value == "") {
-        window.alert(`Por favor, preencha o campo DATA DE NASCIMENTO`)
-        return;
-    }
-
     if (transacao.value == "") {
         window.alert(`Por favor, preencha o campo TRANSACAO`)
         return;
     }
 
-    // se todos os campos do formulario tiver preenchido, o form vai djonguear
-    // console.log(`fonte: ${fonte.value}`)
-    // console.log(`montante: ${montante.value}`)
-    // console.log(`detalhes: ${detalhes.value}`)
-    // console.log(`vencimento: ${vencimento.value}`)
-    // console.log(`transacao: ${transacao.value}`)
-
     const pagar = document.createElement('div')
     pagar.className = "item-2"
 
     let fonteJS = document.createElement('p')
-    fonteJS.innerHTML = `${fonte.value}`
+    fonteJS.textContent = `${fonte.value}`
     pagar.appendChild(fonteJS)
 
     let montanteJS = document.createElement('p')
-    montanteJS.innerHTML = `R$ ${montante.value}`
+    montanteJS.innerHTML = `<span class="valores">R$ ${montante.value}</span>`
     pagar.appendChild(montanteJS)
 
     let detalhesJS = document.createElement('p')
-    detalhesJS.innerHTML = `${detalhes.value}`
+    detalhesJS.textContent = `${detalhes.value}`
     pagar.appendChild(detalhesJS)
 
-    let vencimentoJS = document.createElement('p')
-    vencimentoJS.innerHTML = `${transacao.value}`
-    pagar.appendChild(vencimentoJS)
-
     let transacaoJS = document.createElement('p')
-    transacaoJS.innerHTML = `${vencimento.value}`
+    let converterData = transacao.value.split('-').reverse().join('/')
+    transacaoJS.textContent = `${converterData}`
     pagar.appendChild(transacaoJS)
 
     pagar.innerHTML += `<i class="bi bi-check2-all btn-check"></i>`
 
-    const divPai = document.getElementById('aPagar')
     divPai.appendChild(pagar)
-    atualizarDespesas();
+
+    form.reset()
+    atualizarDespesa()
 })
 
-
-//adicionar entrada
-const addMoneyButton = document.getElementById('addMoney')
-
-addMoneyButton.addEventListener('click', function () {
-    const entradasSpan = document.getElementById('entradas')
-
-    let entradas = parseFloat(entradasSpan.textContent)
-
-    let novoSaldo = parseFloat(prompt("Digite o valor a ser acrescentado:"))
-
-    if (isNaN(novoSaldo) || novoSaldo < 0) {
-        alert('Por favor, digite um valor válido!')
-        return
-    }
-
-    let novoSaldoTotal = entradas + novoSaldo
-    entradasSpan.textContent = novoSaldoTotal.toFixed(2)
-});
-
-
 //despesas (preciso pegar a div pagas e percorrer todos os valores(classe montante) e dps somar todas elas)
-function atualizarDespesas() {
-    const pagas = document.getElementById('pagas');
-    let contas = pagas.getElementsByClassName('montante');
 
-    let despesasTotal = 0;
+function atualizarDespesa() {
+    let divsFilhas = divPai.querySelectorAll('.valores');
+    let soma = 0;
 
-    for (let i = 0; i < contas.length; i++) {
-        let pegarValor = contas[i].textContent;
-
-        if (!isNaN(pegarValor)) {
-            let convertido = parseFloat(pegarValor);
-            despesasTotal += convertido;
+    divsFilhas.forEach(function(divFilha) {
+        let valor = parseFloat(divFilha.textContent);
+        if(!isNaN(valor)) {
+            soma += valor;
         }
-    }
+    });
 
-    let valorTotalElement = document.getElementById('valorTotal');
-    if (valorTotalElement) {
-        valorTotalElement.textContent = despesasTotal.toFixed(2);
-    }
-    console.log(despesasTotal)
-};
+    console.log('Soma dos valores:', soma);
+}
+

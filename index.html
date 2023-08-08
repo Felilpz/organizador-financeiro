@@ -21,9 +21,6 @@
                     <div class="blocosPrincipais">
                         <div class="receita">
                             <p>RECEITAS</p>
-                            <button type="button" id="addMoney">
-                                <i class="bi bi-piggy-bank"></i>
-                            </button>
                         </div>
                         <h2>R$ <span id="entradas">00</span></h2>
                     </div>
@@ -51,12 +48,15 @@
                     </div>
                 </div>
                 <div id="third">
-                    <div class="dataVencimento">
-                        <label for="vencimento">Data de Vencimento:</label><br>
-                        <input type="date" id="vencimento">
+                    <div class="radios">
+                        <label for="firstRadio">Entrada</label>
+                        <input type="radio" id="entradaRadio" name="radio" value="entrada">
+
+                        <label for="saidaRadio">Saída</label>
+                        <input type="radio" id="saidaRadio" name="radio" value="saida" checked>
                     </div>
                     <div class="dataCompra">
-                        <label for="transacao">Data de Transação:</label><br>
+                        <label for="transacao">Data de Lançamento:</label><br>
                         <input type="date" id="transacao">
                     </div>
                     <div class="btn">
@@ -69,30 +69,29 @@
             </form>
             <div id="fourth">
                 <div id="pagas">
-                    <div class="item">
-                        <p>Feira</p>
-                        <p>R$ 88</p>
-                        <p>27/03</p>
+                    <h3 class="colorChange">ENTRADA</h3>
+                    <div class="item" id="exemplo">
+                        <p>FONTE</p>
+                        <p>MONTANTE</p>
+                        <p>DATA</p>
                     </div>
                 </div>
                 <div id="aPagar">
-                    <div class="item-2">
+                    <h3 class="colorChange">SAÍDAS</h3>
+                    <div class="item-2" id="exemplo">
                         <div class="fonte">
-                            <p>Feira</p>
+                            <p>FONTE</p>
                         </div>
                         <div class="montante">
-                            <p>R$ <span class="montante2">70</span></p>
-                        </div>
-                        <div class="vencimento">
-                            <p>27/03/12</p>
-                        </div>
-                        <div class="transacao">
-                            <p>30/08/12</p>
+                            <p>MONTANTE</p>
                         </div>
                         <div class="descricao">
-                            <p>blackaaaaaaa</p>
+                            <p>DETALHES</p>
                         </div>
-                        <i class="bi bi-check2-all btn-check"></i>
+                        <div class="transacao">
+                            <p>DATA</p>
+                        </div>
+                        <i class="bi bi-check2-all" id="btn-check"></i>
                     </div>
                 </div>
             </div>
