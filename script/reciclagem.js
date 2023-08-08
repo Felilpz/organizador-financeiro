@@ -72,3 +72,35 @@
 //     let novoSaldoTotal = entradas + novoSaldo
 //     entradasSpan.textContent = novoSaldoTotal.toFixed(2)
 // });
+
+// function atualizarDespesa() {
+//     let divsFilhas = divPai.querySelectorAll('.valores');
+//     let soma = 0;
+
+//     divsFilhas.forEach(function(divFilha) {
+//         let valor = parseFloat(divFilha.textContent);
+//         if(!isNaN(valor)) {
+//             soma += valor;
+//         }
+//     });
+
+//     console.log('Soma dos valores:', soma);
+// }
+
+function atualizarDespesa() {
+    let banco = [];
+    banco.push(montante.innerText)
+    console.log(banco)
+}
+
+function atualizarDespesa() {
+    let banco = [];
+    let montanteInput = document.getElementById('montante');
+    
+    if (montanteInput) {
+        banco.push(montanteInput.value);
+        console.log(banco);
+    } else {
+        console.log("Elemento 'montante' não encontrado.");
+    }
+}

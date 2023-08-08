@@ -1,3 +1,4 @@
-let take1 = document.getElementById('entradaRadio')
-let take2 = document.getElementById('saidaRadio')
-console.log(take1)
+function atualizarDespesa() {
+    let banco = [];
+    console.log(banco)
+}

@@ -7,6 +7,8 @@ let transacao = document.getElementById('transacao')
 let entrada = document.getElementById('entradaRadio')
 let saida = document.getElementById('radioSaida')
 const divPai = document.getElementById('aPagar')
+let banco = []
+
 
 const form = document.querySelector('#form')
 
@@ -57,23 +59,17 @@ form.addEventListener('submit', (event) => {
 
     divPai.appendChild(pagar)
 
+
+    // armazenando montante em um array e fazend soma para despesas
+    banco.push(parseFloat(montante.value))
+    console.log(banco)
+    let soma = 0
+    for(c = 0; c < banco.length; c++) {
+        soma += Number(banco[c])
+    }
+    console.log(soma)
+
     form.reset()
-    atualizarDespesa()
 })
 
 //despesas (preciso pegar a div pagas e percorrer todos os valores(classe montante) e dps somar todas elas)
-
-function atualizarDespesa() {
-    let divsFilhas = divPai.querySelectorAll('.valores');
-    let soma = 0;
-
-    divsFilhas.forEach(function(divFilha) {
-        let valor = parseFloat(divFilha.textContent);
-        if(!isNaN(valor)) {
-            soma += valor;
-        }
-    });
-
-    console.log('Soma dos valores:', soma);
-}
-
