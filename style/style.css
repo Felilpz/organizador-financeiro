@@ -244,6 +244,7 @@ button#addMoney:hover {
 
 .colorChange {
     color: var(--cor2);
+    padding-top: 15px;
 }
 
 #exemplo {
@@ -256,6 +257,16 @@ button#addMoney:hover {
 
 #escolherTela {
     width: 100%;
-    background-color: var(--cor2);
-    border-bottom: var(--cor1);
+    
+    display: flex;
+    justify-content: space-around;
+    font-size: 14px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid grey;
+}
+
+.escolhaINDIVIDUAL {
+    width: 200px;
+
+    display: flex;
 }

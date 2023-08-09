@@ -35,29 +35,42 @@ form.addEventListener('submit', (event) => {
         return;
     }
 
-    const pagar = document.createElement('div')
-    pagar.className = "item-2"
+    const entradaSaida = document.getElementsByName('radio')
+    let opcao
+    for(c = 0; c < entradaSaida.length; c++) {
+        if(entradaSaida[c].checked) {
+            opcao = entradaSaida[c].value
+            console.log(opcao)
+            break
+        }
 
-    let fonteJS = document.createElement('p')
-    fonteJS.textContent = `${fonte.value}`
-    pagar.appendChild(fonteJS)
+        if(entradaSaida == 'saida') {
 
-    let montanteJS = document.createElement('p')
-    montanteJS.innerHTML = `<span class="valores">R$ ${montante.value}</span>`
-    pagar.appendChild(montanteJS)
+            const pagar = document.createElement('div')
+            pagar.className = "item-2"
 
-    let detalhesJS = document.createElement('p')
-    detalhesJS.textContent = `${detalhes.value}`
-    pagar.appendChild(detalhesJS)
+            let fonteJS = document.createElement('p')
+            fonteJS.textContent = `${fonte.value}`
+            pagar.appendChild(fonteJS)
 
-    let transacaoJS = document.createElement('p')
-    let converterData = transacao.value.split('-').reverse().join('/')
-    transacaoJS.textContent = `${converterData}`
-    pagar.appendChild(transacaoJS)
+            let montanteJS = document.createElement('p')
+            montanteJS.innerHTML = `<span class="valores">R$ ${montante.value}</span>`
+            pagar.appendChild(montanteJS)
 
-    pagar.innerHTML += `<i class="bi bi-check2-all btn-check"></i>`
+            let detalhesJS = document.createElement('p')
+            detalhesJS.textContent = `${detalhes.value}`
+            pagar.appendChild(detalhesJS)
 
-    divPai.appendChild(pagar)
+            let transacaoJS = document.createElement('p')
+            let converterData = transacao.value.split('-').reverse().join('/')
+            transacaoJS.textContent = `${converterData}`
+            pagar.appendChild(transacaoJS)
+
+            pagar.innerHTML += `<i class="bi bi-check2-all btn-check"></i>`
+
+            divPai.appendChild(pagar)
+            }
+    }
 
 
     // armazenando montante em um array e fazend soma para despesas
@@ -70,6 +83,19 @@ form.addEventListener('submit', (event) => {
     console.log(soma)
 
     form.reset()
+    atualizarDespesas()
 })
 
 //despesas (preciso pegar a div pagas e percorrer todos os valores(classe montante) e dps somar todas elas)
+function atualizarDespesas() {
+    let inputReceita = document.getElementById('entradas').value
+   
+    banco.push(parseFloat(montante.value))
+    let soma = 0
+    for(c = 0; c < banco.length; c++) {
+        soma += Number(banco[c])
+    }
+    
+    let despesas = document.getElementById('despesas')
+    despesas.innerText = soma
+}
