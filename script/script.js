@@ -4,13 +4,15 @@ let fonte = document.getElementById('credor')
 let montante = document.getElementById('valor')
 let detalhes = document.getElementById('detalhes')
 let transacao = document.getElementById('transacao')
-let entrada = document.getElementById('entradaRadio')
-let saida = document.getElementById('radioSaida')
+// let entrada = document.getElementById('entradaRadio')
+// let saida = document.getElementById('radioSaida')
 const divPai = document.getElementById('aPagar')
 let banco = []
 
-const title = document.getElementById('titulo')
-
+let title = document.getElementById('titulo')
+const entradaDiv = document.getElementById('entradaDiv')
+const pagarDiv = document.getElementById('pagarDiv')
+const pagasDiv = document.getElementById('pagasDiv')
 
 const form = document.querySelector('#form')
 
@@ -37,55 +39,57 @@ form.addEventListener('submit', (event) => {
         return;
     }
 
-    if (entrada.checked) {
-        const principal = document.createElement('div')
-        principal.className = 'item-2'
+    let radioValor = document.querySelector('input[name="radio"]:checked').value
+    if(radioValor === "entrada") {
+        const principal = document.getElementById('entradaID')
+        const subPrincipal = document.createElement('div')
+        subPrincipal.className = "item-2"
 
         let fonteEntrada = document.createElement('p')
         fonteEntrada.innerHTML = `${fonte.value}`
-        principal.appendChild(fonteEntrada)
+        subPrincipal.appendChild(fonteEntrada)
 
         let montanteEntrada = document.createElement('p')
         montanteEntrada.innerHTML = `${montante.value}`
-        principal.appendChild(montanteEntrada)
+        subPrincipal.appendChild(montanteEntrada)
 
         let detalhesEntrada = document.createElement('p')
         detalhesEntrada.innerHTML = `${detalhes.value}`
-        principal.appendChild(detalhesEntrada)
+        subPrincipal.appendChild(detalhesEntrada)
 
         let transacaoEntrada = document.createElement('p')
         transacaoEntrada.innerHTML = `${transacao.value}`
-        principal.appendChild(transacaoEntrada)
+        subPrincipal.appendChild(transacaoEntrada)
 
-        principal.innerHTML += `<i class="bi bi-check2-all btn-check"></i>`
+        subPrincipal.innerHTML += `<i class="bi bi-check2-all btn-check"></i>`
 
-        const pai = document.getElementById('aPagar')
-        pai.appendChild(principal)
-    } else {
-        const principal = document.createElement('div')
-        principal.className = "item-2"
+        principal.appendChild(subPrincipal)
+    } else
 
-        let fonteSaida = document.createElement('p')
-        fonteSaida.innerHTML = `${fonte.value}`
-        principal.appendChild(fonteSaida)
+    // if(radioValor === "saida") {
+    //     const principal = document.getElementById('saidaID')
+    //     const subPrincipal = document.createElement('div')
+    //     subPrincipal.className = "item-2"
 
-        let montanteSaida = document.createElement('p')
-        montanteSaida.innerHTML = `R$ ${montante.value}`
-        principal.appendChild(montanteSaida)
+    //     let fonteSaida = document.createElement('p')
+    //     fonteSaida.innerHTML = `${fonte}`
+    //     subPrincipal.appendChild(fonteSaida)
 
-        let detalhesSaida = document.createElement('p')
-        detalhesSaida.innerHTML = `${detalhes.value}`
-        principal.appendChild(detalhesSaida)
+    //     let montanteSaida = document.createElement('p')
+    //     montanteSaida.innerHTML = `${montante}`
+    //     subPrincipal.appendChild(montanteSaida)
 
-        let transacaoSaida = document.createElement('p')
-        transacaoSaida.innerHTML = `${transacao.value}`
-        principal.appendChild(transacaoSaida)
+    //     let detalhesSaida = document.createElement('p')
+    //     detalhesSaida.innerHTML = `${detalhes}`
+    //     subPrincipal.appendChild(detalhesSaida)
 
-        principal.innerHTML += `<i class="bi bi-check2-all btn-check"></i>`
+    //     let transacaoSaida = document.createElement('p')
+    //     transacaoSaida.innerHTML = `${transacao}`
+    //     subPrincipal.appendChild(transacaoSaida)
 
-        const divPai = document.getElementById('aPagar')
-        divPai.appendChild(principal)
-    }
+    //     principal.appendChild(subPrincipal)
+    // }
+
 
     // armazenando montante em um array e fazend soma para despesas
     banco.push(parseFloat(montante.value))
@@ -111,20 +115,21 @@ function atualizarDespesas() {
 }
 
 function escolherTela() {
-    var title = document.getElementById("title");
+    // checar qual input radio está clicado e mostrar a tela
+    let entradas = document.getElementsByName('chooseScreen')
+    let titulo = document.getElementById('titulo')
 
-    if (document.getElementById('entradasId').checked){
-        title.innerText = "ENTRADAS";
-        console.log('Entrada');
-    } else if (document.getElementById('pegarId').checked) {
-        title.innerText = "PAGAR";
-        console.log('Pagar');
-    } else {
-        title.innerText = "PAGAS";
-        console.log('Pagas');
+    for(let i = 0; i < entradas.length; i++) {
+        entradas[i].addEventListener('change', function() {
+            for(let j = 0; j < entradas.length; j++) {
+                if(entradas[j].checked) {
+                    titulo.innerText = entradas[j].value.toUpperCase();
+                    console.log(entradas[j].value)
+                    break;
+                }
+            }
+        });
     }
 }
 
-window.onload = function() {
-    escolherTela();
-};
+escolherTela()

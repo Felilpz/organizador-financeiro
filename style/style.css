@@ -268,3 +268,8 @@ button#addMoney:hover {
     display: flex;
     justify-content: space-between;
 }
+
+/* entrda - pagar - pagas divs */
+#entradaDiv, #pagasDiv {
+    display: none;
+}
