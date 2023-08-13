@@ -5,7 +5,8 @@ let transacao = document.getElementById('transacao')
 // let entrada = document.getElementById('entradaRadio')
 // let saida = document.getElementById('radioSaida')
 const divPai = document.getElementById('aPagar')
-let banco = []
+let banco = [] //saida
+let saldo = [] //entrada
 
 let title = document.getElementById('titulo')
 
@@ -57,6 +58,10 @@ form.addEventListener('submit', (event) => {
         subPrincipal.appendChild(transacaoEntrada)
 
         principal.appendChild(subPrincipal)
+
+        //armazenar valor de entrada para fazer soma em "entrada"
+        const valor = parseFloat(montante.value)
+        saldo.push(valor)
     }
 
     if (radioValor === "saida") {
@@ -83,14 +88,38 @@ form.addEventListener('submit', (event) => {
         subPrincipal.innerHTML += `<i class="bi bi-check2-all btn-check"></i>`
 
         principal.appendChild(subPrincipal)
+
+        const valor = parseFloat(montante.value);
+        banco.push(valor)
     }
 
-    // armazenando montante em um array e fazend soma para despesas
-    banco.push(parseFloat(montante.value))
-    console.log(banco)
-    let soma = 0
-    for (c = 0; c < banco.length; c++) {
-        soma += Number(banco[c])
+    function atualizarSomas() {
+        let somaEntrada = 0
+        for (let c = 0; c < saldo.length; c++) {
+            somaEntrada += saldo[c]
+            let entradasInput = document.getElementById('entradas')
+            entradasInput.textContent = somaEntrada.toFixed(2)
+        }
+
+        let somaSaida = 0
+        for (let c = 0; c < banco.length; c++) {
+            somaSaida += banco[c]
+            let saidasInput = document.getElementById('despesas')
+            saidasInput.textContent = somaSaida.toFixed(2)
+        }
+
+        //saldo disponível
+        let disponivel = document.getElementById('disponivel')
+        let restante = (somaEntrada - somaSaida).toFixed(2)
+        disponivel.textContent = restante
+    }
+
+    atualizarSomas()
+
+    //calcular o valor que sobra dps q a div é transferida para aPagar
+    function calculoSaida(djonga) {
+        let valorTransferido = banco.splice(djonga, 1[0])
+        atualizarSomas()
     }
 
     //marcar a "conta" como paga
@@ -106,6 +135,7 @@ form.addEventListener('submit', (event) => {
                 const contaPaga = this.parentElement; // Encontra a div da conta atual
                 const pagasDiv = document.getElementById('pagasID');
                 pagasDiv.appendChild(contaPaga);
+                calculoSaida(i)
             }
         });
     }

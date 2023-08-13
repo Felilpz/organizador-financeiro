@@ -104,3 +104,11 @@ function atualizarDespesa() {
         console.log("Elemento 'montante' não encontrado.");
     }
 }
+
+    // armazenando montante em um array e fazend soma para despesas
+    banco.push(parseFloat(montante.value))
+    console.log(banco)
+    let soma = 0
+    for (c = 0; c < banco.length; c++) {
+        soma += Number(banco[c])
+    }
