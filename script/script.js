@@ -1,5 +1,3 @@
-const btn = document.getElementById('botao')
-
 let fonte = document.getElementById('credor')
 let montante = document.getElementById('valor')
 let detalhes = document.getElementById('detalhes')
@@ -37,7 +35,7 @@ form.addEventListener('submit', (event) => {
     }
 
     let radioValor = document.querySelector('input[name="radio"]:checked').value
-    if(radioValor === "entrada") {
+    if (radioValor === "entrada") {
         const principal = document.getElementById('entradaID')
         const subPrincipal = document.createElement('div')
         subPrincipal.className = "item-2"
@@ -58,12 +56,10 @@ form.addEventListener('submit', (event) => {
         transacaoEntrada.innerHTML = `${transacao.value}`
         subPrincipal.appendChild(transacaoEntrada)
 
-        subPrincipal.innerHTML += `<i class="bi bi-check2-all btn-check"></i>`
-
         principal.appendChild(subPrincipal)
-    } 
+    }
 
-    if(radioValor === "saida") {
+    if (radioValor === "saida") {
         const principal = document.getElementById('pagarID')
         const subPrincipal = document.createElement('div')
         subPrincipal.className = "item-2"
@@ -87,34 +83,7 @@ form.addEventListener('submit', (event) => {
         subPrincipal.innerHTML += `<i class="bi bi-check2-all btn-check"></i>`
 
         principal.appendChild(subPrincipal)
-    } 
-
-
-
-    // if(radioValor === "saida") {
-    //     const principal = document.getElementById('saidaID')
-    //     const subPrincipal = document.createElement('div')
-    //     subPrincipal.className = "item-2"
-
-    //     let fonteSaida = document.createElement('p')
-    //     fonteSaida.innerHTML = `${fonte}`
-    //     subPrincipal.appendChild(fonteSaida)
-
-    //     let montanteSaida = document.createElement('p')
-    //     montanteSaida.innerHTML = `${montante}`
-    //     subPrincipal.appendChild(montanteSaida)
-
-    //     let detalhesSaida = document.createElement('p')
-    //     detalhesSaida.innerHTML = `${detalhes}`
-    //     subPrincipal.appendChild(detalhesSaida)
-
-    //     let transacaoSaida = document.createElement('p')
-    //     transacaoSaida.innerHTML = `${transacao}`
-    //     subPrincipal.appendChild(transacaoSaida)
-
-    //     principal.appendChild(subPrincipal)
-    // }
-
+    }
 
     // armazenando montante em um array e fazend soma para despesas
     banco.push(parseFloat(montante.value))
@@ -123,6 +92,24 @@ form.addEventListener('submit', (event) => {
     for (c = 0; c < banco.length; c++) {
         soma += Number(banco[c])
     }
+
+    //marcar a "conta" como paga
+    let acaoBtns = document.querySelectorAll('.btn-check');
+
+    for (let i = 0; i < acaoBtns.length; i++) {
+        let acaoBtn = acaoBtns[i];
+
+        acaoBtn.addEventListener('click', function () {
+            let resposta = confirm("Você tem certeza de que quer marcar a conta como PAGA?");
+
+            if (resposta) {
+                const contaPaga = this.parentElement; // Encontra a div da conta atual
+                const pagasDiv = document.getElementById('pagasID');
+                pagasDiv.appendChild(contaPaga);
+            }
+        });
+    }
+
 })
 
 //despesas (preciso pegar a div pagas e percorrer todos os valores(classe montante) e dps somar todas elas)
@@ -148,18 +135,18 @@ function escolherTela() {
     let pagarID = document.getElementById('pagarID')
     let entradaID = document.getElementById('entradaID')
 
-    for(let i = 0; i < entradas.length; i++) {
-        entradas[i].addEventListener('change', function() {
-            for(let j = 0; j < entradas.length; j++) {
-                if(entradas[j].checked) {
+    for (let i = 0; i < entradas.length; i++) {
+        entradas[i].addEventListener('change', function () {
+            for (let j = 0; j < entradas.length; j++) {
+                if (entradas[j].checked) {
                     // titulo.innerHTML = entradas[j].value.toUpperCase();
-                   console.log(entradas[j].value)
+                    console.log(entradas[j].value)
                     // break;
-                    if(entradas[j].value == 'Entradas') {
+                    if (entradas[j].value == 'Entradas') {
                         entradaID.style.display = 'block'
                         pagasID.style.display = 'none'
                         pagarID.style.display = 'none'
-                    } else if(entradas[j].value == 'Pagar') {
+                    } else if (entradas[j].value == 'Pagar') {
                         entradaID.style.display = 'none'
                         pagasID.style.display = 'none'
                         pagarID.style.display = 'block'
@@ -172,7 +159,7 @@ function escolherTela() {
             }
         });
     }
-    
+
 }
 
 escolherTela()

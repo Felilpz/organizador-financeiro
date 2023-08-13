@@ -162,12 +162,11 @@ tr:nth-child(even) {
     flex-direction: column;
 }
 
-.item-2 {
+.item-2, .item-3 {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 5px;
-    height: 30px;
 }
 
 .item-2:nth-child(odd) {
