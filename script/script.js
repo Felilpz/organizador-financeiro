@@ -10,9 +10,6 @@ const divPai = document.getElementById('aPagar')
 let banco = []
 
 let title = document.getElementById('titulo')
-const entradaDiv = document.getElementById('entradaDiv')
-const pagarDiv = document.getElementById('pagarDiv')
-const pagasDiv = document.getElementById('pagasDiv')
 
 const form = document.querySelector('#form')
 
@@ -64,7 +61,35 @@ form.addEventListener('submit', (event) => {
         subPrincipal.innerHTML += `<i class="bi bi-check2-all btn-check"></i>`
 
         principal.appendChild(subPrincipal)
-    } else
+    } 
+
+    if(radioValor === "saida") {
+        const principal = document.getElementById('pagarID')
+        const subPrincipal = document.createElement('div')
+        subPrincipal.className = "item-2"
+
+        let fonteSaida = document.createElement('p')
+        fonteSaida.innerHTML = `${fonte.value}`
+        subPrincipal.appendChild(fonteSaida)
+
+        let montanteSaida = document.createElement('p')
+        montanteSaida.innerHTML = `${montante.value}`
+        subPrincipal.appendChild(montanteSaida)
+
+        let detalhesSaida = document.createElement('p')
+        detalhesSaida.innerHTML = `${detalhes.value}`
+        subPrincipal.appendChild(detalhesSaida)
+
+        let transacaoSaida = document.createElement('p')
+        transacaoSaida.innerHTML = `${transacao.value}`
+        subPrincipal.appendChild(transacaoSaida)
+
+        subPrincipal.innerHTML += `<i class="bi bi-check2-all btn-check"></i>`
+
+        principal.appendChild(subPrincipal)
+    } 
+
+
 
     // if(radioValor === "saida") {
     //     const principal = document.getElementById('saidaID')
@@ -119,17 +144,35 @@ function escolherTela() {
     let entradas = document.getElementsByName('chooseScreen')
     let titulo = document.getElementById('titulo')
 
+    let pagasID = document.getElementById('pagasID')
+    let pagarID = document.getElementById('pagarID')
+    let entradaID = document.getElementById('entradaID')
+
     for(let i = 0; i < entradas.length; i++) {
         entradas[i].addEventListener('change', function() {
             for(let j = 0; j < entradas.length; j++) {
                 if(entradas[j].checked) {
-                    titulo.innerText = entradas[j].value.toUpperCase();
-                    console.log(entradas[j].value)
-                    break;
+                    // titulo.innerHTML = entradas[j].value.toUpperCase();
+                   console.log(entradas[j].value)
+                    // break;
+                    if(entradas[j].value == 'Entradas') {
+                        entradaID.style.display = 'block'
+                        pagasID.style.display = 'none'
+                        pagarID.style.display = 'none'
+                    } else if(entradas[j].value == 'Pagar') {
+                        entradaID.style.display = 'none'
+                        pagasID.style.display = 'none'
+                        pagarID.style.display = 'block'
+                    } else {
+                        entradaID.style.display = 'none'
+                        pagasID.style.display = 'block'
+                        pagarID.style.display = 'none'
+                    }
                 }
             }
         });
     }
+    
 }
 
 escolherTela()
