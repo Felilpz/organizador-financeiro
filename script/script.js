@@ -8,6 +8,9 @@ const divPai = document.getElementById('aPagar')
 let banco = [] //saida
 let saldo = [] //entrada
 
+//local storage
+const main = document.getElementById('fourth')
+
 let title = document.getElementById('titulo')
 
 const form = document.querySelector('#form')
@@ -57,6 +60,7 @@ form.addEventListener('submit', (event) => {
         transacaoEntrada.innerHTML = `${transacao.value}`
         subPrincipal.appendChild(transacaoEntrada)
 
+
         principal.appendChild(subPrincipal)
 
         //armazenar valor de entrada para fazer soma em "entrada"
@@ -85,8 +89,6 @@ form.addEventListener('submit', (event) => {
         transacaoSaida.innerHTML = `${transacao.value}`
         subPrincipal.appendChild(transacaoSaida)
 
-        subPrincipal.innerHTML += `<i class="bi bi-check2-all btn-check"></i>`
-
         principal.appendChild(subPrincipal)
 
         const valor = parseFloat(montante.value);
@@ -95,14 +97,14 @@ form.addEventListener('submit', (event) => {
 
     function atualizarSomas() {
         let somaEntrada = 0
-        for (let c = 0; c < saldo.length; c++) {
+        for(let c = 0; c < saldo.length; c++) {
             somaEntrada += saldo[c]
             let entradasInput = document.getElementById('entradas')
             entradasInput.textContent = somaEntrada.toFixed(2)
         }
 
         let somaSaida = 0
-        for (let c = 0; c < banco.length; c++) {
+        for(let c = 0; c < banco.length; c++) {
             somaSaida += banco[c]
             let saidasInput = document.getElementById('despesas')
             saidasInput.textContent = somaSaida.toFixed(2)
@@ -115,31 +117,7 @@ form.addEventListener('submit', (event) => {
     }
 
     atualizarSomas()
-
-    //calcular o valor que sobra dps q a div é transferida para aPagar
-    function calculoSaida(djonga) {
-        let valorTransferido = banco.splice(djonga, 1[0])
-        atualizarSomas()
-    }
-
-    //marcar a "conta" como paga
-    let acaoBtns = document.querySelectorAll('.btn-check');
-
-    for (let i = 0; i < acaoBtns.length; i++) {
-        let acaoBtn = acaoBtns[i];
-
-        acaoBtn.addEventListener('click', function () {
-            let resposta = confirm("Você tem certeza de que quer marcar a conta como PAGA?");
-
-            if (resposta) {
-                const contaPaga = this.parentElement; // Encontra a div da conta atual
-                const pagasDiv = document.getElementById('pagasID');
-                pagasDiv.appendChild(contaPaga);
-                calculoSaida(i)
-            }
-        });
-    }
-
+    localStorage.setItem("projetoFinanca", main.innerHTML)
 })
 
 //despesas (preciso pegar a div pagas e percorrer todos os valores(classe montante) e dps somar todas elas)
@@ -154,6 +132,7 @@ function atualizarDespesas() {
 
     let despesas = document.getElementById('despesas')
     despesas.innerText = soma
+    localStorage.setItem("projetoFinanca", main.innerHTML)
 }
 
 function escolherTela() {
@@ -161,7 +140,6 @@ function escolherTela() {
     let entradas = document.getElementsByName('chooseScreen')
     let titulo = document.getElementById('titulo')
 
-    let pagasID = document.getElementById('pagasID')
     let pagarID = document.getElementById('pagarID')
     let entradaID = document.getElementById('entradaID')
 
@@ -174,22 +152,23 @@ function escolherTela() {
                     // break;
                     if (entradas[j].value == 'Entradas') {
                         entradaID.style.display = 'block'
-                        pagasID.style.display = 'none'
                         pagarID.style.display = 'none'
-                    } else if (entradas[j].value == 'Pagar') {
+                    } else  {
                         entradaID.style.display = 'none'
-                        pagasID.style.display = 'none'
                         pagarID.style.display = 'block'
-                    } else {
-                        entradaID.style.display = 'none'
-                        pagasID.style.display = 'block'
-                        pagarID.style.display = 'none'
                     }
                 }
             }
         });
     }
-
+    localStorage.setItem("projetoFinanca", main.innerHTML)
 }
 
 escolherTela()
+
+window.onload = function () {
+    let projetoFinanca = localStorage.getItem('projetoFinanca')
+    if(projetoFinanca) {
+        main.innerHTML
+    }
+}

@@ -112,3 +112,57 @@ function atualizarDespesa() {
     for (c = 0; c < banco.length; c++) {
         soma += Number(banco[c])
     }
+
+    //marcar a "conta" como paga
+    let acaoBtns = document.querySelectorAll('.btn-check');
+
+    for (let i = 0; i < acaoBtns.length; i++) {
+        let acaoBtn = acaoBtns[i];
+
+        acaoBtn.addEventListener('click', function () {
+            let resposta = confirm("Você tem certeza de que quer marcar a conta como PAGA?");
+
+            if (resposta) {
+                const contaPaga = this.parentElement; // Encontra a div da conta atual
+                const pagasDiv = document.getElementById('pagasID');
+                pagasDiv.appendChild(contaPaga);
+            }
+        });
+    }
+
+
+    function escolherTela() {
+        // checar qual input radio está clicado e mostrar a tela
+        let entradas = document.getElementsByName('chooseScreen')
+        let titulo = document.getElementById('titulo')
+    
+        let pagasID = document.getElementById('pagasID')
+        let pagarID = document.getElementById('pagarID')
+        let entradaID = document.getElementById('entradaID')
+    
+        for (let i = 0; i < entradas.length; i++) {
+            entradas[i].addEventListener('change', function () {
+                for (let j = 0; j < entradas.length; j++) {
+                    if (entradas[j].checked) {
+                        // titulo.innerHTML = entradas[j].value.toUpperCase();
+                        console.log(entradas[j].value)
+                        // break;
+                        if (entradas[j].value == 'Entradas') {
+                            entradaID.style.display = 'block'
+                            pagasID.style.display = 'none'
+                            pagarID.style.display = 'none'
+                        } else if (entradas[j].value == 'Pagar') {
+                            entradaID.style.display = 'none'
+                            pagasID.style.display = 'none'
+                            pagarID.style.display = 'block'
+                        } else {
+                            entradaID.style.display = 'none'
+                            pagasID.style.display = 'block'
+                            pagarID.style.display = 'none'
+                        }
+                    }
+                }
+            });
+        }
+    
+    }

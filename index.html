@@ -45,7 +45,7 @@
                     </div>
                     <div class="detalhesDespesa">
                         <label for="detalhes">Detalhes:</label><br>
-                        <input type="text" id="detalhes" maxlength="12">
+                        <input type="text" id="detalhes">
                     </div>
                 </div>
 
@@ -73,19 +73,19 @@
                 <div id="aPagar">
                     <div id="escolherTela">
                         <div class="chooseScreen">
-                            <label for="entradasId">Entradas</label>
+                            <label for="entradasId">ENTRADAS</label>
                             <input type="radio" name="chooseScreen" id="entradasId" value="Entradas">
-                        </div>
-                        
-                        <div class="chooseScreen">
-                            <label for="pagarId">Pagar</label>
-                            <input type="radio" name="chooseScreen" id="pagarId" value="Pagar" checked>
                         </div>
 
                         <div class="chooseScreen">
+                            <label for="pagarId">SAÍDAS</label>
+                            <input type="radio" name="chooseScreen" id="pagarId" value="Pagar" checked>
+                        </div>
+                        <!-- 
+                        <div class="chooseScreen">
                             <label for="pagas">Pagas</label>
                             <input type="radio" name="chooseScreen" id="pagas" value="Pagas">
-                        </div>
+                        </div> -->
                     </div>
                     <div id="entradaID">
                         <div class="item-3">
@@ -103,8 +103,23 @@
                             </div>
                         </div>
                     </div>
-                    <div id="pagarID"></div>
-                    <div id="pagasID"></div>
+                    <div id="pagarID">
+                        <div class="item-3">
+                            <div class="fonte">
+                                <p>FONTE</p>
+                            </div>
+                            <div class="montante">
+                                <p>MONTANTE</p>
+                            </div>
+                            <div class="descricao">
+                                <p>DETALHES</p>
+                            </div>
+                            <div class="transacao">
+                                <p>DATA</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div id="pagasID"></div> -->
                 </div>
             </div>
         </main>

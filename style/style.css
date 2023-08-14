@@ -149,10 +149,10 @@ tr:nth-child(even) {
     width: 100px;
 } */
 
-#pagas {
+/* #pagas {
     width: 100%;
     padding: 5px;
-}
+} */
 
 #aPagar {
     width: 100%;
@@ -167,6 +167,10 @@ tr:nth-child(even) {
     justify-content: space-between;
     align-items: center;
     padding: 5px;
+}
+
+.item-3 {
+    background-color: var(--cor5);
 }
 
 .item-2:nth-child(odd) {
@@ -221,7 +225,7 @@ button#addMoney {
     padding: 0;
     width: 20px;
     font-size: 1em;
-    text-align: right;
+    text-align: left;
     border: none;
     background-color: transparent;
 }
@@ -266,6 +270,7 @@ button#addMoney:hover {
     width: 200px;
     display: flex;
     justify-content: space-between;
+    font-weight: bold;
 }
 
 /* entrda - pagar - pagas divs */
