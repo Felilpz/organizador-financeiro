@@ -166,3 +166,39 @@ function atualizarDespesa() {
         }
     
     }
+
+
+    let acaoBtns = document.querySelector('.btn-check')
+
+    for (let i = 0; i < acaoBtns.length; i++) {
+        let acaoBtn = acaoBtns[i];
+        console.log(acaoBtn)
+
+        acaoBtns.addEventListener('click', function () {
+            let resposta = confirm("Você tem certeza de que quer marcar a conta como PAGA?");
+
+            if (resposta == true) {
+                const contaPaga = this.parentElement // Encontra a div da conta atual
+                const pagasDiv = document.getElementById('pagasID')
+                pagasDiv.appendChild(contaPaga)
+            }
+        })
+     }
+})
+
+
+
+//despesas (preciso pegar a div pagas e percorrer todos os valores(classe montante) e dps somar todas elas)
+// function atualizarDespesas() {
+//     let inputReceita = document.getElementById('entradas').value
+
+//     banco.push(parseFloat(montante.value))
+//     let soma = 0
+//     for (c = 0; c < banco.length; c++) {
+//         soma += Number(banco[c])
+//     }
+
+//     let despesas = document.getElementById('despesas')
+//     despesas.innerText = soma
+//     localStorage.setItem("projetoFinanca", main.innerHTML)
+// }
