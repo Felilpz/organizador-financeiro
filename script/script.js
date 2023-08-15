@@ -1,6 +1,7 @@
 // retornar botão de pagar
 // remover conta
 // editar valor
+// deixar o despesas vermelho se o valor for negativo
 
 let fonte = document.getElementById('credor')
 let montante = document.getElementById('valor')
@@ -20,26 +21,26 @@ let title = document.getElementById('titulo')
 const form = document.querySelector('#form')
 
 form.addEventListener('submit', (event) => {
-    event.preventDefault();
+    event.preventDefault()
 
     if (fonte.value == "") {
         window.alert(`Por favor, preencha o campo FONTE`)
-        return;
+        return
     }
 
     if (montante.value == "") {
         window.alert(`Por favor, preencha o campo MONTANTE`)
-        return;
+        return
     }
 
     if (detalhes.value == "") {
         window.alert(`Por favor, preencha o campo DETALHES`)
-        return;
+        return
     }
 
     if (transacao.value == "") {
         window.alert(`Por favor, preencha o campo TRANSACAO`)
-        return;
+        return
     }
 
     let radioValor = document.querySelector('input[name="radio"]:checked').value
@@ -76,30 +77,39 @@ form.addEventListener('submit', (event) => {
     if (radioValor === "saida") {
         const principal = document.getElementById('pagarID')
         const subPrincipal = document.createElement('div')
+        const subPrincipal2 = document.createElement('div')
         subPrincipal.className = "item-2"
 
         let fonteSaida = document.createElement('p')
         fonteSaida.innerHTML = `${fonte.value}`
         subPrincipal.appendChild(fonteSaida)
+        subPrincipal2.appendChild(fonteSaida)
 
         let montanteSaida = document.createElement('p')
         montanteSaida.className = 'pegarValor'
         montanteSaida.innerHTML = `${montante.value}`
         subPrincipal.appendChild(montanteSaida)
+        subPrincipal2.appendChild(montanteSaida)
 
         let detalhesSaida = document.createElement('p')
         detalhesSaida.innerHTML = `${detalhes.value}`
         subPrincipal.appendChild(detalhesSaida)
+        subPrincipal2.appendChild(detalhesSaida)
 
         let transacaoSaida = document.createElement('p')
         transacaoSaida.innerHTML = `${transacao.value.split('-').reverse().join("/")}`
         // console.log(transacao.value.split('-').reverse().join("/"))
         subPrincipal.appendChild(transacaoSaida)
+        subPrincipal2.append(transacaoSaida)
 
-        subPrincipal.innerHTML += `<i class="bi bi-check2-all btn-check"></i>`
+
+
+        subPrincipal.innerHTML += `<i class="bi bi-check-all btn-check"></i>`
+        subPrincipal.innerHTML += `<i class="bi bi-pen-fill"></i>`
+        subPrincipal.innerHTML += `<i class="bi bi-trash3-fill"></i>`
         principal.appendChild(subPrincipal)
 
-        const valor = parseFloat(montante.value);
+        const valor = parseFloat(montante.value)
         banco.push(valor)
     }
 
