@@ -77,7 +77,7 @@ form.addEventListener('submit', (event) => {
     if (radioValor === "saida") {
         const principal = document.getElementById('pagarID')
         const subPrincipal = document.createElement('div')
-        const subPrincipal2 = document.createElement('div')
+        // const subPrincipal2 = document.createElement('div')
         subPrincipal.className = "item-2"
 
         let fonteSaida = document.createElement('p')
@@ -172,6 +172,8 @@ form.addEventListener('submit', (event) => {
             disponivel.textContent = Math.abs(disponivel.innerHTML) - valorUm
         })
     }
+
+    form.reset()
 }
 )
 
