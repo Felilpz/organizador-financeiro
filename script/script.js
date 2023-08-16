@@ -83,24 +83,24 @@ form.addEventListener('submit', (event) => {
         let fonteSaida = document.createElement('p')
         fonteSaida.innerHTML = `${fonte.value}`
         subPrincipal.appendChild(fonteSaida)
-        subPrincipal2.appendChild(fonteSaida)
+        // subPrincipal2.appendChild(fonteSaida)
 
         let montanteSaida = document.createElement('p')
         montanteSaida.className = 'pegarValor'
         montanteSaida.innerHTML = `${montante.value}`
         subPrincipal.appendChild(montanteSaida)
-        subPrincipal2.appendChild(montanteSaida)
+        // subPrincipal2.appendChild(montanteSaida)
 
         let detalhesSaida = document.createElement('p')
         detalhesSaida.innerHTML = `${detalhes.value}`
         subPrincipal.appendChild(detalhesSaida)
-        subPrincipal2.appendChild(detalhesSaida)
+        // subPrincipal2.appendChild(detalhesSaida)
 
         let transacaoSaida = document.createElement('p')
         transacaoSaida.innerHTML = `${transacao.value.split('-').reverse().join("/")}`
         // console.log(transacao.value.split('-').reverse().join("/"))
         subPrincipal.appendChild(transacaoSaida)
-        subPrincipal2.append(transacaoSaida)
+        // subPrincipal2.append(transacaoSaida)
 
 
 

@@ -202,3 +202,38 @@ function atualizarDespesa() {
 //     despesas.innerText = soma
 //     localStorage.setItem("projetoFinanca", main.innerHTML)
 // }
+
+//marcar a "conta" como paga
+let acaoBtns = document.querySelectorAll('.btn-check')
+
+for (let c = 0; c < acaoBtns.length; c++) {
+    let acaoBtn = acaoBtns[c]
+    acaoBtn.addEventListener('click', function () {
+        let resposta = confirm("Você tem certeza de que quer marcar a conta como PAGA?");
+        console.log(resposta)
+        if (resposta) {
+            const contaPaga = this.parentElement // Encontra a div da conta atual
+            // const contaPaga = document.querySelector('.item-2')
+            // let valorUm = document.querySelector('.pegarValor').innerHTML
+            // let valorDois = document.getElementById('disponivel').innerHTML
+            // // console.log(atualizarConta.innerHTML - atualizarMontante.innerHTML)
+            // let res = atualizarDespesa()
+            // console.log(res)
+            const pagasDiv = document.getElementById('pagasID')
+            pagasDiv.appendChild(contaPaga)
+        }
+
+        let valorUm = document.querySelector('.pegarValor').innerHTML
+        let valorDois = document.getElementById('disponivel').innerHTML
+        // console.log(atualizarConta.innerHTML - atualizarMontante.innerHTML)
+        
+        //altera bloco despesas
+        console.log(Math.abs(valorDois) - valorUm)
+        let saidasInput = document.getElementById('despesas')
+        saidasInput.textContent = Math.abs(valorDois) - valorUm
+
+        //altera bloco disponivel
+        let disponivel = document.getElementById('disponivel')
+        disponivel.textContent = Math.abs(disponivel.innerHTML) - valorUm
+    })
+}
