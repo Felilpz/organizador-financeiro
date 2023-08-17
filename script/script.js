@@ -118,17 +118,17 @@ form.addEventListener('submit', (event) => {
         let somaEntrada = 0
         for (let c = 0; c < saldo.length; c++) {
             somaEntrada += saldo[c]
-            let entradasInput = document.getElementById('entradas')
-            entradasInput.textContent = somaEntrada.toFixed(2)
         }
+        let entradasInput = document.getElementById('entradas')
+        entradasInput.textContent = somaEntrada.toFixed(2)
 
         //saldo saida
         let somaSaida = 0
         for (let c = 0; c < banco.length; c++) {
             somaSaida += banco[c]
-            let saidasInput = document.getElementById('despesas')
-            saidasInput.textContent = somaSaida.toFixed(2)
         }
+        let saidasInput = document.getElementById('despesas')
+        saidasInput.textContent = somaSaida.toFixed(2)
 
         //saldo disponível
         let disponivel = document.getElementById('disponivel')
@@ -136,44 +136,40 @@ form.addEventListener('submit', (event) => {
         disponivel.textContent = restante
     }
 
-    atualizarSomas()
-
     //marcar a "conta" como paga
     let acaoBtns = document.querySelectorAll('.btn-check')
 
     for (let c = 0; c < acaoBtns.length; c++) {
         let acaoBtn = acaoBtns[c]
         acaoBtn.addEventListener('click', function () {
-            let resposta = confirm("Você tem certeza de que quer marcar a conta como PAGA?");
-            console.log(resposta)
-            if (resposta) {
-                const contaPaga = this.parentElement // Encontra a div da conta atual
-                // const contaPaga = document.querySelector('.item-2')
-                // let valorUm = document.querySelector('.pegarValor').innerHTML
-                // let valorDois = document.getElementById('disponivel').innerHTML
-                // // console.log(atualizarConta.innerHTML - atualizarMontante.innerHTML)
-                // let res = atualizarDespesa()
-                // console.log(res)
-                const pagasDiv = document.getElementById('pagasID')
-                pagasDiv.appendChild(contaPaga)
-            }
+            // let resposta = confirm("Você tem certeza de que quer marcar a conta como PAGA?");
+            // console.log(resposta)
+
+            const contaPaga = this.parentElement // Encontra a div da conta atual
+            const pagasDiv = document.getElementById('pagasID')
+            pagasDiv.appendChild(contaPaga)
+
 
             let valorUm = document.querySelector('.pegarValor').innerHTML
             let valorDois = document.getElementById('disponivel').innerHTML
             // console.log(atualizarConta.innerHTML - atualizarMontante.innerHTML)
-            
+
             //altera bloco despesas
-            console.log(Math.abs(valorDois) - valorUm)
+            console.log(parseFloat(valorDois) - valorUm)
             let saidasInput = document.getElementById('despesas')
-            saidasInput.textContent = Math.abs(valorDois) - valorUm
+            saidasInput.textContent = parseFloat(valorDois) - parseFloat(valorUm)
 
             //altera bloco disponivel
             let disponivel = document.getElementById('disponivel')
-            disponivel.textContent = Math.abs(disponivel.innerHTML) - valorUm
+            disponivel.textContent = parseFloat(disponivel.innerHTML) - parseFloat(valorUm)
+
+            // console.log(acaoBtn[c].value)
+            atualizarSomas()
         })
     }
 
-    form.reset()
+    // form.reset()
+    atualizarSomas()
 }
 )
 
@@ -215,10 +211,3 @@ function escolherTela() {
 }
 
 escolherTela()
-
-window.onload = function () {
-    let projetoFinanca = localStorage.getItem('projetoFinanca')
-    if (projetoFinanca) {
-        main.innerHTML
-    }
-}
