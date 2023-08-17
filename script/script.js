@@ -2,6 +2,8 @@
 // remover conta
 // editar valor
 // deixar o despesas vermelho se o valor for negativo
+let banco = [] //saida
+let saldo = [] //entrada
 
 let fonte = document.getElementById('credor')
 let montante = document.getElementById('valor')
@@ -11,8 +13,6 @@ let transacao = document.getElementById('transacao')
 // let saida = document.getElementById('radioSaida')
 const divPai = document.getElementById('aPagar')
 
-
-//local storage
 const main = document.getElementById('fourth')
 
 let title = document.getElementById('titulo')
@@ -100,8 +100,6 @@ form.addEventListener('submit', (event) => {
         subPrincipal.appendChild(transacaoSaida)
         // subPrincipal2.append(transacaoSaida)
 
-
-
         subPrincipal.innerHTML += `<i class="bi bi-check-all btn-check"></i>`
         subPrincipal.innerHTML += `<i class="bi bi-pen-fill"></i>`
         subPrincipal.innerHTML += `<i class="bi bi-trash3-fill"></i>`
@@ -109,6 +107,29 @@ form.addEventListener('submit', (event) => {
 
         const valor = parseFloat(montante.value)
         banco.push(valor)
+    }
+
+    function atualizarSomas() {
+        //saldo entrada
+        let somaEntrada = 0
+        for (let c = 0; c < saldo.length; c++) {
+            somaEntrada += saldo[c]
+        }
+        let entradasInput = document.getElementById('entradas')
+        entradasInput.textContent = somaEntrada.toFixed(2)
+        
+        //saldo saida
+        let somaSaida = 0
+        for (let c = 0; c < banco.length; c++) {
+            somaSaida += banco[c]
+        }
+        let saidasInput = document.getElementById('despesas')
+        saidasInput.textContent = somaSaida.toFixed(2)
+        
+        //saldo disponível
+        let disponivel = document.getElementById('disponivel')
+        let restante = (somaEntrada - somaSaida).toFixed(2)
+        disponivel.textContent = restante
     }
 
     let acaoBtns = document.querySelectorAll('.btn-check');
@@ -124,94 +145,22 @@ form.addEventListener('submit', (event) => {
             pagasDiv.appendChild(contaPaga);
 
             //ao inves de pegar o id do valor que tem no montante, pegar a soma dos vlaores do array e diminuir
-            let numeroUm = document.getElementById('despesas').innerText
-            let numeroDois = contaPaga.querySelector('.pegarValor').innerText
-            let djonga = parseFloat(numeroUm) - parseFloat(numeroDois)
-
-
-            document.getElementById('despesas').innerHTML = ''
-            document.getElementById('despesas').innerHTML = djonga
-
-
-            // atualizarSomas()
+            let numeroDois = parseFloat(contaPaga.querySelector('.pegarValor').innerText);
+            let elementoDespesas = document.getElementById('despesas');
+            let totalDespesas = parseFloat(elementoDespesas.innerText);
+            let totalDespesasAtualizado = totalDespesas - numeroDois;
+            
+            elementoDespesas.textContent = totalDespesasAtualizado.toFixed(2);
+            console.log(totalDespesasAtualizado)
+            atualizarSomas();
         });
+        
 
-        function atualizarSomas() {
-            let banco = [] //saida
-            let saldo = [] //entrada
-            //saldo entrada
-            let somaEntrada = 0
-            for (let c = 0; c < saldo.length; c++) {
-                somaEntrada += saldo[c]
-                let entradasInput = document.getElementById('entradas')
-                entradasInput.textContent = somaEntrada.toFixed(2)
-            }
-
-            //saldo saida
-            let somaSaida = 0
-            for (let c = 0; c < banco.length; c++) {
-                somaSaida += banco[c]
-                let saidasInput = document.getElementById('despesas')
-                saidasInput.textContent = somaSaida.toFixed(2)
-            }
-
-            //saldo disponível
-            let disponivel = document.getElementById('disponivel')
-            let restante = (somaEntrada - somaSaida).toFixed(2)
-            disponivel.textContent = restante
-        }
     }
-
+    atualizarSomas()
 }
 
-    // function atualizarSomas() {
-    //     //saldo entrada
-    //     let somaEntrada = 0
-    //     for (let c = 0; c < saldo.length; c++) {
-    //         somaEntrada += saldo[c]
-    //         let entradasInput = document.getElementById('entradas')
-    //         entradasInput.textContent = somaEntrada.toFixed(2)
-    //     }
-
-    //     //saldo saida
-    //     let somaSaida = 0
-    //     for (let c = 0; c < banco.length; c++) {
-    //         somaSaida += banco[c]
-    //         let saidasInput = document.getElementById('despesas')
-    //         saidasInput.textContent = somaSaida.toFixed(2)
-    //     }
-
-    //     //saldo disponível
-    //     let disponivel = document.getElementById('disponivel')
-    //     let restante = (somaEntrada - somaSaida).toFixed(2)
-    //     disponivel.textContent = restante
-    // }
-
-    // atualizarSomas()
-    // // form.reset()
 )
-//saldo entrada
-let somaEntrada = 0
-for (let c = 0; c < saldo.length; c++) {
-    somaEntrada += saldo[c]
-    let entradasInput = document.getElementById('entradas')
-    entradasInput.textContent = somaEntrada.toFixed(2)
-}
-
-//saldo saida
-let somaSaida = 0
-for (let c = 0; c < banco.length; c++) {
-    somaSaida += banco[c]
-    let saidasInput = document.getElementById('despesas')
-    saidasInput.textContent = somaSaida.toFixed(2)
-}
-
-//saldo disponível
-let disponivel = document.getElementById('disponivel')
-let restante = (somaEntrada - somaSaida).toFixed(2)
-disponivel.textContent = restante
-
-
 
 function escolherTela() {
     // checar qual input radio está clicado e mostrar a tela
