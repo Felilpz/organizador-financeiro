@@ -140,19 +140,21 @@ form.addEventListener('submit', (event) => {
         acaoBtn.addEventListener('click', function () {
             const contaPaga = this.parentElement; // Encontra a div da conta atual
             const pagasDiv = document.getElementById('pagasID');
-
-
             pagasDiv.appendChild(contaPaga);
 
             //ao inves de pegar o id do valor que tem no montante, pegar a soma dos vlaores do array e diminuir
-            let numeroDois = parseFloat(contaPaga.querySelector('.pegarValor').innerText);
-            let elementoDespesas = document.getElementById('despesas');
-            let totalDespesas = parseFloat(elementoDespesas.innerText);
-            let totalDespesasAtualizado = totalDespesas - numeroDois;
+            let first = document.getElementById('despesas').innerText
+            let second = document.querySelector('.pegarValor').innerHTML
+            // console.log(first, second)
+            for(let i = 0; i < second.length; i++) {
+                let calculo = parseFloat(first) - parseFloat(second)
+                console.log(calculo)
+                // console.log(tentativa)
+                atualizarSomas();
+                return acaoBtn
+            }
             
-            elementoDespesas.textContent = totalDespesasAtualizado.toFixed(2);
-            console.log(totalDespesasAtualizado)
-            atualizarSomas();
+            
         });
         
 
