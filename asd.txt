@@ -71,7 +71,6 @@ form.addEventListener('submit', (event) => {
         //armazenar valor de entrada para fazer soma em "entrada"
         const valor = parseFloat(montante.value)
         saldo.push(valor)
-        atualizarEntrada()
     }
 
     if (radioValor === "saida") {
@@ -108,7 +107,28 @@ form.addEventListener('submit', (event) => {
 
         const valor = parseFloat(montante.value)
         banco.push(valor)
-        atualizarSaida()
+    }
+
+    function atualizarSaida() {
+        //saldo saida
+        let somaSaida = 0
+        for (let c = 0; c < banco.length; c++) {
+            somaSaida += banco[c]
+        }
+        let saidasInput = document.getElementById('despesas')
+        saidasInput.textContent = somaSaida.toFixed(2)
+    }
+    
+    function atualizarDisponivel() {
+        function atualizarEntrada() {
+            //saldo entrada
+            let somaEntrada = 0
+            for (let c = 0; c < saldo.length; c++) {
+                somaEntrada += saldo[c]
+            }
+            let entradasInput = document.getElementById('entradas')
+            entradasInput.textContent = somaEntrada.toFixed(2)    
+        }
     }
 
     let acaoBtns = document.querySelectorAll('.btn-check');
@@ -135,46 +155,12 @@ form.addEventListener('submit', (event) => {
 
 
         });
+
+
+        atualizarSomas()
     }
 }
 )
-
-//se for entrada
-const divEntrada = document.getElementById('entradaID')
-const divs = divEntrada.querySelectorAll('.pegarValor');
-let totalEntrada = 0;
-function atualizarEntrada() {
-        let valores = document.querySelectorAll('.pegarValor')
-        let total = 0
-
-        for(let i = 0; i < valores.length; i++) {
-            let valor = parseFloat(valores[i].textContent)
-            total += valor
-        }
-        document.getElementById('entradas').textContent = total.toFixed(2)
-}
-
-//se for saida
-const divSaida = document.getElementById('entradaID')
-const divs2 = divSaida.querySelectorAll('.pegarValor');
-let totalSaida = 0;
-function atualizarSaida() {
-        let valores = document.querySelectorAll('.pegarValor')
-        let total = 0
-
-        for(let i = 0; i < valores.length; i++) {
-            let valor = parseFloat(valores[i].textContent)
-            total += valor
-        }
-        document.getElementById('despesas').textContent = total.toFixed(2)
-}
-
-//se for disponivel
-let n1 = document.getElementById('entradaID')
-let n2 = document.getElementById('despesas')
-let calculo = parseFloat(n1) - parseFloat(n2)
-document.getElementById('disponivel').textContent = calculo
-
 
 function escolherTela() {
     // checar qual input radio está clicado e mostrar a tela
@@ -213,8 +199,3 @@ function escolherTela() {
 }
 
 escolherTela()
-
-// desisti. tentar qnd tiver mais conheecimento.
-// motivo? nao consegui atualizar valores nos displays
-// quando adicionava uma conta, o valor nao subtraia da maneira certa e o valor nao atualizava do mesmo jeito no display
-// conflito de div (pegava os dados da div entrada dps da saida etc)
